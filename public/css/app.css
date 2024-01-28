@@ -611,8 +611,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #home .container .registration-form form .form-control {
   padding: 10px 15px;
-  border: 2px solid rgba(15, 0, 0, 0.2);
   background-color: #fff2f4;
+  border-width: 2px;
+}
+#home .container .registration-form form .form-control:not(.is-valid):not(.is-invalid) {
+  border-color: rgba(15, 0, 0, 0.2);
 }
 #home .container .registration-form form .form-control:not(.is-valid):not(.is-invalid):focus {
   border-color: #660505;

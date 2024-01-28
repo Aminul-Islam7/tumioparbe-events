@@ -11,23 +11,26 @@
       <main class="registration-form">
         <h2 class="form-title">Event Registration</h2>
         <p class="action-text">Confirm your seats now!</p>
-        <form class="needs-validation" action="/" method="POST">
+        <form class="needs-validation" action="{{ url('/bkash/create-payment') }}" method="POST">
           @csrf
           <div class="mb-4">
             <label for="name-field" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name-field" name="name" placeholder="Shamima Akter" value="{{old('name')}}" required>
+            <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name-field" name="name" placeholder="Shamima Akter" value="{{old('name')}}" required>
+            <div lang="bn" class="invalid-feedback">
+              নামটি সঠিক ভাবে লিখুন।
+            </div>
             <div id="nameHelp" lang="bn" class="form-text">ইংরেজিতে আপনার নাম লিখুন।</div>
           </div>
           <div class="mb-4">
-            <label for="phone-field" class="form-label">Phone Number</label>
+            <label for="phone-field" class="form-label">Contact Number</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="addon">+88</span>
               <input type="number" class="form-control @error('phone') is-invalid @enderror" id="phone-field" name="phone" placeholder="01XXXXXXXXX" value="{{old('phone')}}" required>
-            <div class="invalid-feedback">
+            <div lang="bn" class="invalid-feedback">
               ফোন নম্বরটি সঠিক নয়।
             </div>
             </div>
-            <div id="phoneHelp" lang="bn" class="form-text">আপনার ১১-ডিজিটের ফোন নম্বর ইংরেজিতে লিখুন।</div>
+            <div id="phoneHelp" lang="bn" class="form-text">আপনার ১১-ডিজিটের ফোন নম্বর লিখুন।</div>
           </div>
           <div class="mb-4">
             <label for="district-field" class="form-label">District</label>
@@ -39,7 +42,7 @@
             
             <div id="ticket-input">
               <label for="tickets-field" class="form-label">Tickets:</label>
-              <input type="number" @error('tickets') style="border: 2px solid #DC3534" @enderror id="tickets-field" name="tickets" value="2" min="1" required>
+              <input type="number" @error('tickets') style="border: 2px solid #DC3534" @enderror id="tickets-field" name="tickets" value="{{old('tickets', '2')}}" min="1" required>
               <button type="button" id="increment"><i class="fa-solid fa-plus"></i></button>
               <button type="button" id="decrement"><i class="fa-solid fa-minus"></i></button>
               <p class="ticket-price">
@@ -49,7 +52,7 @@
               </p>
             </div>
             @error('tickets')
-              <div class="mt-1" style="color:#DC3534;font-size:14px"> {{ $message }}</div>
+              <div lang="bn" class="mt-1" style="color:#DC3534;font-size:14px"> {{ $message }}</div>
             @enderror
 
             

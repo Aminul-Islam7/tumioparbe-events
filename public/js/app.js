@@ -154,29 +154,34 @@ const totalSeatSpan = document.querySelector("#totalSeats");
 
 // Increment button
 document.querySelector("#increment").addEventListener("click", () => {
-	const currentValue = parseInt(ticketsField.value);
+	const currentValue = parseInt(ticketsField.value) || 0; // Default to 0 if NaN
 	ticketsField.value = currentValue + 1;
 	updateTotalPrice();
 });
 
 // Decrement button
 document.querySelector("#decrement").addEventListener("click", () => {
-	const currentValue = parseInt(ticketsField.value);
+	const currentValue = parseInt(ticketsField.value) || 0; // Default to 0 if NaN
 	if (currentValue > 1) {
 		ticketsField.value = currentValue - 1;
 	}
 	updateTotalPrice();
 });
 
+// Input event on ticketsField
+ticketsField.addEventListener("input", () => {
+	updateTotalPrice();
+});
+
 // Update total price function
 function updateTotalPrice() {
 	const ticketPrice = 1000; // Assuming ticket price is $1000
-	const totalPrice = ticketsField.value * ticketPrice;
+	const inputValue = parseInt(ticketsField.value) || 0; // Default to 0 if NaN
+	const totalPrice = inputValue * ticketPrice;
 	totalPriceSpan.textContent = totalPrice;
-	// totalSeatSpan.textContent = ticketsField.value;
+	// totalSeatSpan.textContent = inputValue;
 }
 
-// Initial total price calculation
 updateTotalPrice();
 
 $(document).ready(function () {

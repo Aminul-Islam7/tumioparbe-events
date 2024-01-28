@@ -544,7 +544,7 @@ body.dark-mode #home .container .title {
   color: #fff2f4;
 }
 body.dark-mode #home .container .registration-form {
-  background: rgba(255, 242, 242, 0.07);
+  background: rgba(255, 242, 242, 0.09);
 }
 body.dark-mode #home .container .registration-form .form-title {
   color: #fff2f4;
@@ -567,7 +567,7 @@ body.dark-mode #home .container .registration-form form .form-control:not(.is-va
 }
 body.dark-mode #home .container .registration-form form .form-text {
   color: #fff2f4;
-  opacity: 0.65;
+  opacity: 0.7;
 }
 body.dark-mode #home .container .registration-form form .input-group .input-group-text {
   background: rgba(15, 0, 0, 0.5);
