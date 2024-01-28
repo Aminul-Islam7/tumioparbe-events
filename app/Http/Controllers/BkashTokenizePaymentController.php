@@ -41,7 +41,6 @@ class BkashTokenizePaymentController extends Controller
         Session::put('phone', $phone);
         Session::put('district', $district);
         Session::put('tickets', $tickets);
-        Session::put('amount', $amount);
 
         $inv = uniqid();
         $request['intent'] = 'sale';
@@ -73,47 +72,6 @@ class BkashTokenizePaymentController extends Controller
         if ($request->status == 'success'){
             $response = BkashPaymentTokenize::executePayment($request->paymentID);
             
-            $name = Session::get('name');
-            $phone = Session::get('phone');
-            $district = Session::get('district');
-            $tickets = Session::get('tickets');
-
-            // dd(array_keys($response));
-
-            $registration = new Registration;
-
-            $lastRecord = Registration::latest()->first();
-
-            if ($lastRecord) {
-                $lastId = $lastRecord->id;
-                
-            } else {
-                $lastId = 0;
-            }
-
-            $registration->reg_no = 24000 + $lastId + 1;
-
-            $registration->name = $name;
-            $registration->phone = $phone;
-            $registration->district = $district;
-            $registration->tickets = $tickets;
-
-            // $registration->amount = $response['amount'];
-            $registration->amount = $tickets * 1000;
-            $registration->bkash_number = $response["customerMsisdn"];
-            $registration->trx_id = $response["trxID"];
-            $registration->payer_ref = $response["payerReference"];
-            $registration->invoice_no = $response["merchantInvoiceNumber"];
-            $registration->pay_id = $response["paymentID"];
-            $registration->status = $response["statusMessage"];
-            $registration->status_code = $response["statusCode"];
-            $registration->intent = $response["intent"];
-            $registration->trx_status = $response["transactionStatus"];
-            $registration->pay_execute_time = $response["paymentExecuteTime"];
-
-            $registration->save();
-
-
             //$response = BkashPaymentTokenize::executePayment($request->paymentID, 1); //last parameter is your account number for multi account its like, 1,2,3,4,cont..
             if (!$response){ //if executePayment payment not found call queryPayment
                 $response = BkashPaymentTokenize::queryPayment($request->paymentID);
@@ -125,7 +83,53 @@ class BkashTokenizePaymentController extends Controller
                  * for refund need to store
                  * paymentID and trxID
                  * */
-                return BkashPaymentTokenize::success('Thank you for your payment', $response['trxID']);
+
+                $name = Session::get('name');
+                $phone = Session::get('phone');
+                $district = Session::get('district');
+                $tickets = Session::get('tickets');
+
+                Session::forget('name');
+                Session::forget('phone');
+                Session::forget('district');
+                Session::forget('tickets');
+
+                // dd(array_keys($response));
+
+                $registration = new Registration;
+
+                $lastRecord = Registration::latest()->first();
+
+                if ($lastRecord) {
+                    $lastId = $lastRecord->id;
+                    
+                } else {
+                    $lastId = 0;
+                }
+
+                $registration->reg_no = 24000 + $lastId + 1;
+
+                $registration->name = $name;
+                $registration->phone = $phone;
+                $registration->district = $district;
+                $registration->tickets = $tickets;
+
+                $registration->amount = $response["amount"];
+                $registration->bkash_number = $response["customerMsisdn"];
+                $registration->trx_id = $response["trxID"];
+                $registration->payer_ref = $response["payerReference"];
+                $registration->invoice_no = $response["merchantInvoiceNumber"];
+                $registration->pay_id = $response["paymentID"];
+                $registration->status = $response["statusMessage"];
+                $registration->status_code = $response["statusCode"];
+                $registration->intent = $response["intent"];
+                $registration->trx_status = $response["transactionStatus"];
+                $registration->pay_execute_time = $response["paymentExecuteTime"];
+
+                $registration->save();
+
+                // return BkashPaymentTokenize::success('Thank you for your payment', $response['trxID']);
+                return redirect()->route('success', ['paymentID' => $response['paymentID']]);
             }
             return BkashPaymentTokenize::failure($response['statusMessage']);
         }else if ($request->status == 'cancel'){

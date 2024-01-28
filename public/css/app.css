@@ -575,7 +575,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 20px 0;
   text-align: center;
 }
-#home .container .registration-form {
+#home .container .box {
   background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   padding: 28px 24px;
@@ -586,54 +586,55 @@ input[type=number]::-webkit-outer-spin-button {
   font-weight: 400;
   color: #0f0000;
 }
-#home .container .registration-form .form-title {
+#home .container .box .box-title {
   text-align: center;
   font-family: "Nunito", sans-serif;
   font-size: 36px;
   font-weight: 800;
   color: #660505;
 }
-#home .container .registration-form .action-text {
+#home .container .box .action-text {
   text-align: center;
   font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: 300;
   color: #0f0000;
 }
-#home .container .registration-form form {
+#home .container .box form {
   margin-top: 30px;
 }
-#home .container .registration-form form #phone-field {
+#home .container .box form #phone-field {
   letter-spacing: 1px;
 }
-#home .container .registration-form form .form-text {
+#home .container .box form .form-text {
   color: #777070;
 }
-#home .container .registration-form form .form-control {
+#home .container .box form .form-control {
   padding: 10px 15px;
   background-color: #fff2f4;
   border-width: 2px;
 }
-#home .container .registration-form form .form-control:not(.is-valid):not(.is-invalid) {
+#home .container .box form .form-control:not(.is-valid):not(.is-invalid) {
   border-color: rgba(15, 0, 0, 0.2);
 }
-#home .container .registration-form form .form-control:not(.is-valid):not(.is-invalid):focus {
+#home .container .box form .form-control:not(.is-valid):not(.is-invalid):focus {
   border-color: #660505;
 }
-#home .container .registration-form form .input-group-text {
+#home .container .box form .input-group-text {
   border: 2px solid rgba(15, 0, 0, 0.2);
   border-right: none;
 }
-#home .container .registration-form form #ticket-input {
+#home .container .box form #ticket-input {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
-#home .container .registration-form form #ticket-input label {
+#home .container .box form #ticket-input label {
   margin: 0;
   margin-right: 5px;
+  font-size: 18px;
 }
-#home .container .registration-form form #ticket-input input {
+#home .container .box form #ticket-input input {
   margin-left: 5px;
   width: 36px;
   height: 36px;
@@ -643,11 +644,11 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 5px;
   text-align: center;
 }
-#home .container .registration-form form #ticket-input input:focus {
+#home .container .box form #ticket-input input:focus {
   border: 2px solid #660505;
   box-shadow: none;
 }
-#home .container .registration-form form #ticket-input button {
+#home .container .box form #ticket-input button {
   height: 30px;
   width: 30px;
   background: rgba(0, 0, 0, 0.5);
@@ -657,10 +658,10 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0 4px;
   transition: 0.2s;
 }
-#home .container .registration-form form #ticket-input button:hover {
+#home .container .box form #ticket-input button:hover {
   background: #660505;
 }
-#home .container .registration-form form .ticket-price {
+#home .container .box form .ticket-price {
   font-family: "Nunito", sans-serif;
   font-size: 18px;
   font-weight: 700;
@@ -670,7 +671,7 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 5px;
   margin-left: auto;
 }
-#home .container .registration-form form #pay-button {
+#home .container .box form #pay-button {
   width: 100%;
   background: #d90070;
   color: #fff2f4;
@@ -679,24 +680,38 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 10px;
   transition: 0.2s;
 }
-#home .container .registration-form form #pay-button:hover {
+#home .container .box form #pay-button:hover {
   background: #de0000;
 }
-#home .container .registration-form form #pay-button:hover img {
+#home .container .box form #pay-button:hover img {
   margin-right: 10px;
 }
-#home .container .registration-form form #pay-button:hover i {
+#home .container .box form #pay-button:hover i {
   margin-left: 10px;
   opacity: 1;
 }
-#home .container .registration-form form #pay-button img {
+#home .container .box form #pay-button img {
   width: 40px;
   margin-right: 5px;
   transition: 0.2s;
 }
-#home .container .registration-form form #pay-button i {
+#home .container .box form #pay-button i {
   font-size: 20px;
   margin-left: 5px;
   opacity: 0;
   transition: 0.2s;
+}
+#home .info .info-text {
+  margin-top: 20px;
+  font-size: 20px;
+  opacity: 0.8;
+  text-align: center;
+}
+#home .info .reg-num {
+  margin-top: 20px;
+  font-size: 24px;
+  opacity: 0.8;
+  text-align: center;
+  color: #de0000;
+  font-weight: 600;
 }/*# sourceMappingURL=app.css.map */

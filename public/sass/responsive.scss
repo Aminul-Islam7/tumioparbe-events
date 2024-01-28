@@ -10,7 +10,7 @@
 @media (max-width: 575px) {
 	#home {
 		.container {
-			.registration-form {
+			.box {
 				width: 100%;
 			}
 		}
@@ -54,10 +54,10 @@ body.dark-mode {
 				color: $white;
 			}
 
-			.registration-form {
-				background: rgba(255, 242, 242, 0.09);
+			.box {
+				background: rgba(255, 242, 242, 0.1);
 
-				.form-title {
+				.box-title {
 					color: $white;
 				}
 				.action-text {
@@ -119,6 +119,14 @@ body.dark-mode {
 						}
 					}
 				}
+			}
+		}
+
+		.info {
+			color: $white;
+
+			.reg-num {
+				color: $lightred;
 			}
 		}
 	}

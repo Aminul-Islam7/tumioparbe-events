@@ -44,8 +44,20 @@
 	<button type="button" class="darkmode-btn" id="dark-mode-toggle">
 				<i class="color-theme-icon fa-solid fa-lightbulb"></i>
 	</button>
-
-  {{ $slot }}
+	
+  <section id="home">
+    <div class="container">
+      <img class="logo" src="{{asset('images/logo.png')}}" alt="Tumio Parbe">
+      <h1 class="title">
+        Annual Awards Ceremony
+        <br>
+        & Cultural Function 2024
+      </h1>
+			
+			{{ $slot }}
+				
+    </div>
+  </section>
 
   
 	<script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>

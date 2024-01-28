@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\BkashTokenizePaymentController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +40,12 @@ Route::post('/', [RegistrationController::class, 'store']);
 
 
 // bKash Payment Routes
-Route::get('/bkash/payment', [App\Http\Controllers\BkashTokenizePaymentController::class,'index']);
+Route::get('/bkash/payment', [BkashTokenizePaymentController::class,'index']);
 
-Route::post('/bkash/create-payment', [App\Http\Controllers\BkashTokenizePaymentController::class,'createPayment'])->name('bkash-create-payment');
+Route::post('/bkash/create-payment', [BkashTokenizePaymentController::class,'createPayment'])->name('bkash-create-payment');
 
-Route::get('/bkash/callback', [App\Http\Controllers\BkashTokenizePaymentController::class,'callBack'])->name('bkash-callBack');
+Route::get('/bkash/callback', [BkashTokenizePaymentController::class,'callBack'])->name('bkash-callBack');
+
+
+Route::get('/registration-success/{payID}', [RegistrationController::class, 'success'])->name('success');
+

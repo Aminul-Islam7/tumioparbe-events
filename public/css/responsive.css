@@ -530,7 +530,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media (max-width: 575px) {
-  #home .container .registration-form {
+  #home .container .box {
     width: 100%;
   }
 }
@@ -543,52 +543,58 @@ body.dark-mode #particles {
 body.dark-mode #home .container .title {
   color: #fff2f4;
 }
-body.dark-mode #home .container .registration-form {
-  background: rgba(255, 242, 242, 0.09);
+body.dark-mode #home .container .box {
+  background: rgba(255, 242, 242, 0.1);
 }
-body.dark-mode #home .container .registration-form .form-title {
+body.dark-mode #home .container .box .box-title {
   color: #fff2f4;
 }
-body.dark-mode #home .container .registration-form .action-text {
+body.dark-mode #home .container .box .action-text {
   color: #fff2f4;
 }
-body.dark-mode #home .container .registration-form form .form-label {
+body.dark-mode #home .container .box form .form-label {
   color: #fff2f4;
 }
-body.dark-mode #home .container .registration-form form .form-control {
+body.dark-mode #home .container .box form .form-control {
   background-color: #0f0000;
   color: #fff2f4;
 }
-body.dark-mode #home .container .registration-form form .form-control:not(.is-valid):not(.is-invalid) {
+body.dark-mode #home .container .box form .form-control:not(.is-valid):not(.is-invalid) {
   border-color: rgba(255, 242, 242, 0.2);
 }
-body.dark-mode #home .container .registration-form form .form-control:not(.is-valid):not(.is-invalid):focus {
+body.dark-mode #home .container .box form .form-control:not(.is-valid):not(.is-invalid):focus {
   border: 2px solid #ff9999;
 }
-body.dark-mode #home .container .registration-form form .form-text {
+body.dark-mode #home .container .box form .form-text {
   color: #fff2f4;
   opacity: 0.7;
 }
-body.dark-mode #home .container .registration-form form .input-group .input-group-text {
+body.dark-mode #home .container .box form .input-group .input-group-text {
   background: rgba(15, 0, 0, 0.5);
   border-color: rgba(255, 242, 242, 0.2);
   color: #fff2f4;
 }
-body.dark-mode #home .container .registration-form form #ticket-input input {
+body.dark-mode #home .container .box form #ticket-input input {
   border-color: rgba(255, 255, 255, 0.5);
   color: #fff2f4;
 }
-body.dark-mode #home .container .registration-form form #ticket-input input:focus {
+body.dark-mode #home .container .box form #ticket-input input:focus {
   border: 2px solid #ff9999;
 }
-body.dark-mode #home .container .registration-form form #ticket-input button {
+body.dark-mode #home .container .box form #ticket-input button {
   background: rgba(255, 255, 255, 0.4);
   color: #fff2f4;
 }
-body.dark-mode #home .container .registration-form form #ticket-input button:hover {
+body.dark-mode #home .container .box form #ticket-input button:hover {
   background: #de0000;
 }
-body.dark-mode #home .container .registration-form form #ticket-input .ticket-price {
+body.dark-mode #home .container .box form #ticket-input .ticket-price {
   color: rgb(0, 210, 0);
   background: rgba(0, 100, 0, 0.55);
+}
+body.dark-mode #home .info {
+  color: #fff2f4;
+}
+body.dark-mode #home .info .reg-num {
+  color: #ff9999;
 }/*# sourceMappingURL=responsive.css.map */

@@ -53,7 +53,7 @@
 			text-align: center;
 		}
 
-		.registration-form {
+		.box {
 			background: rgba(255, 255, 255, 0.7);
 			border-radius: 10px;
 			padding: 28px 24px;
@@ -62,7 +62,7 @@
 
 			@include font();
 
-			.form-title {
+			.box-title {
 				text-align: center;
 				@include font(Nunito, 36px, 800, $darkred);
 			}
@@ -107,6 +107,7 @@
 					label {
 						margin: 0;
 						margin-right: 5px;
+						font-size: 18px;
 					}
 
 					input {
@@ -191,6 +192,23 @@
 					}
 				}
 			}
+		}
+	}
+
+	.info {
+		.info-text {
+			margin-top: 20px;
+			font-size: 20px;
+			opacity: 0.8;
+			text-align: center;
+		}
+		.reg-num {
+			margin-top: 20px;
+			font-size: 24px;
+			opacity: 0.8;
+			text-align: center;
+			color: $red;
+			font-weight: 600;
 		}
 	}
 }
