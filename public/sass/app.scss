@@ -83,7 +83,8 @@
 
 				.form-control {
 					padding: 10px 15px;
-					border-width: 2px;
+					border: 2px solid rgba(15, 0, 0, 0.2);
+					background-color: $white;
 				}
 
 				.form-control:not(.is-valid):not(.is-invalid) {
@@ -92,8 +93,14 @@
 					}
 				}
 
+				.input-group-text {
+					border: 2px solid rgba(15, 0, 0, 0.2);
+					border-right: none;
+				}
+
 				#ticket-input {
 					display: flex;
+					flex-wrap: wrap;
 					align-items: center;
 
 					label {
@@ -130,7 +137,7 @@
 						border-radius: 5px;
 						border: none;
 						color: $white;
-						margin-left: 5px;
+						margin: 0 4px;
 						transition: 0.2s;
 
 						&:hover {
@@ -139,8 +146,12 @@
 					}
 				}
 				.ticket-price {
-					@include font(Nunito, 19px, 700, $red);
-					text-align: center;
+					@include font(Nunito, 18px, 700, rgb(0, 100, 0));
+					// text-align: center;
+					padding: 7px;
+					background: rgb(0, 170, 0, 0.3);
+					border-radius: 5px;
+					margin-left: auto;
 				}
 
 				#pay-button {
@@ -150,10 +161,32 @@
 					font-weight: 600;
 					font-size: 22px;
 					padding: 10px;
+					transition: 0.2s;
+
+					&:hover {
+						background: $red;
+
+						img {
+							margin-right: 10px;
+						}
+
+						i {
+							margin-left: 10px;
+							opacity: 1;
+						}
+					}
 
 					img {
 						width: 40px;
 						margin-right: 5px;
+						transition: 0.2s;
+					}
+
+					i {
+						font-size: 20px;
+						margin-left: 5px;
+						opacity: 0;
+						transition: 0.2s;
 					}
 				}
 			}

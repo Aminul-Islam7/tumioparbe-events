@@ -587,4 +587,8 @@ body.dark-mode #home .container .registration-form form #ticket-input button {
 }
 body.dark-mode #home .container .registration-form form #ticket-input button:hover {
   background: #de0000;
+}
+body.dark-mode #home .container .registration-form form #ticket-input .ticket-price {
+  color: rgb(0, 210, 0);
+  background: rgba(0, 100, 0, 0.55);
 }/*# sourceMappingURL=responsive.css.map */

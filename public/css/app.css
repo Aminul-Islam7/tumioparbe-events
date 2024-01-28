@@ -611,13 +611,19 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #home .container .registration-form form .form-control {
   padding: 10px 15px;
-  border-width: 2px;
+  border: 2px solid rgba(15, 0, 0, 0.2);
+  background-color: #fff2f4;
 }
 #home .container .registration-form form .form-control:not(.is-valid):not(.is-invalid):focus {
   border-color: #660505;
 }
+#home .container .registration-form form .input-group-text {
+  border: 2px solid rgba(15, 0, 0, 0.2);
+  border-right: none;
+}
 #home .container .registration-form form #ticket-input {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 #home .container .registration-form form #ticket-input label {
@@ -645,7 +651,7 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 5px;
   border: none;
   color: #fff2f4;
-  margin-left: 5px;
+  margin: 0 4px;
   transition: 0.2s;
 }
 #home .container .registration-form form #ticket-input button:hover {
@@ -653,10 +659,13 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #home .container .registration-form form .ticket-price {
   font-family: "Nunito", sans-serif;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
-  color: #de0000;
-  text-align: center;
+  color: rgb(0, 100, 0);
+  padding: 7px;
+  background: rgba(0, 170, 0, 0.3);
+  border-radius: 5px;
+  margin-left: auto;
 }
 #home .container .registration-form form #pay-button {
   width: 100%;
@@ -665,8 +674,26 @@ input[type=number]::-webkit-outer-spin-button {
   font-weight: 600;
   font-size: 22px;
   padding: 10px;
+  transition: 0.2s;
+}
+#home .container .registration-form form #pay-button:hover {
+  background: #de0000;
+}
+#home .container .registration-form form #pay-button:hover img {
+  margin-right: 10px;
+}
+#home .container .registration-form form #pay-button:hover i {
+  margin-left: 10px;
+  opacity: 1;
 }
 #home .container .registration-form form #pay-button img {
   width: 40px;
   margin-right: 5px;
+  transition: 0.2s;
+}
+#home .container .registration-form form #pay-button i {
+  font-size: 20px;
+  margin-left: 5px;
+  opacity: 0;
+  transition: 0.2s;
 }/*# sourceMappingURL=app.css.map */
