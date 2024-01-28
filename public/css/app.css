@@ -1,0 +1,672 @@
+.clr {
+  clear: both;
+}
+
+.gototop {
+  position: fixed;
+  font-size: 50px;
+  bottom: 15px;
+  right: 20px;
+  color: #de0000;
+  background-color: #fff2f4;
+  border: 1px solid rgba(255, 242, 242, 0.2);
+  border-radius: 50%;
+  z-index: 99;
+  cursor: pointer;
+  display: none;
+  transition: 0.2s;
+}
+.gototop:hover {
+  padding-bottom: 15px;
+}
+
+.bangla {
+  font-family: "Noto Sans Bengali", sans-serif;
+}
+
+.text {
+  color: #0f0000 !important;
+  opacity: 0.85;
+}
+
+.section-title {
+  margin-bottom: 50px;
+  text-align: center;
+}
+.section-title h1,
+.section-title h2 {
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: #660505;
+  position: relative;
+  margin: 0;
+}
+.section-title h1::after,
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  width: 200px;
+  height: 7px;
+  transform: translateX(-50%);
+  background-color: #660505;
+  border-radius: 100%;
+  opacity: 0.9;
+}
+
+.light-btn {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff2f4;
+  padding: 14px 40px;
+  background-color: #de0000;
+  color: #fff2f4 !important;
+  border: none;
+  border-radius: 70px;
+  transition: 0.2s;
+  background-color: #fff2f4;
+  color: #de0000 !important;
+}
+.light-btn:hover {
+  background-color: #660505;
+  color: #fff2f4;
+}
+.light-btn:hover {
+  background-color: #de0000;
+  color: #fff2f4 !important;
+}
+
+.btn-sm {
+  font-size: 14px !important;
+  padding: 10px 22px !important;
+  font-weight: 500 !important;
+}
+
+.ccard {
+  padding: 20px;
+  background-color: #fff2f4;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 15, 0.2);
+}
+.ccard .fa-check {
+  color: #de0000;
+  margin-right: 10px;
+}
+.ccard ul {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #0f0000;
+}
+.ccard ul li {
+  line-height: 34px;
+}
+
+.move-up {
+  bottom: 0px !important;
+}
+
+.overflowy-scroll {
+  overflow-y: scroll !important;
+}
+
+@keyframes move-forever1 {
+  0% {
+    transform: translate(85px, 0%);
+  }
+  100% {
+    transform: translate(-90px, 0%);
+  }
+}
+@keyframes move-forever2 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+@keyframes move-forever3 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+@keyframes move-updown {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 15px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes scale-updown {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(-100px);
+  }
+  50% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(-100px);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(-100px);
+  }
+}
+.space {
+  padding-top: 1000px;
+  padding-bottom: 1000px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+*::selection {
+  background-color: #de0000;
+  color: #fff2f4;
+}
+
+*[lang*=bn] {
+  font-family: "Noto Sans Bengali", sans-serif !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fff2f4;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  color: #de0000;
+  transition: 0.2s;
+}
+a:hover, a:visited, a:active {
+  color: #660505;
+}
+
+p {
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+figure {
+  margin: 0 !important;
+}
+
+::placeholder {
+  color: #777070 !important;
+  opacity: 0.5 !important;
+}
+
+.accordion-item:first-of-type,
+.accordion-item:first-of-type .accordion-button {
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+.accordion-item:last-of-type,
+.accordion-item:last-of-type .accordion-button {
+  border-bottom-left-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+.accordion-item:last-of-type .accordion-button:not(.collapsed) {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.accordion-button {
+  background-color: #fff2f4;
+  color: #0f0000;
+  font-family: "Noto Sans Bengali", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0f0000;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #ff9999;
+  color: #0f0000;
+  font-family: "Noto Sans Bengali", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0f0000;
+}
+
+.accordion-body {
+  background-color: #fff2f4;
+  border-radius: 10px;
+  font-family: "Noto Sans Bengali", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #0f0000;
+  opacity: 0.8;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23660505'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  transform: rotate(-180deg);
+}
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.clr {
+  clear: both;
+}
+
+.gototop {
+  position: fixed;
+  font-size: 50px;
+  bottom: 15px;
+  right: 20px;
+  color: #de0000;
+  background-color: #fff2f4;
+  border: 1px solid rgba(255, 242, 242, 0.2);
+  border-radius: 50%;
+  z-index: 99;
+  cursor: pointer;
+  display: none;
+  transition: 0.2s;
+}
+.gototop:hover {
+  padding-bottom: 15px;
+}
+
+.bangla {
+  font-family: "Noto Sans Bengali", sans-serif;
+}
+
+.text {
+  color: #0f0000 !important;
+  opacity: 0.85;
+}
+
+.section-title {
+  margin-bottom: 50px;
+  text-align: center;
+}
+.section-title h1,
+.section-title h2 {
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: #660505;
+  position: relative;
+  margin: 0;
+}
+.section-title h1::after,
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  width: 200px;
+  height: 7px;
+  transform: translateX(-50%);
+  background-color: #660505;
+  border-radius: 100%;
+  opacity: 0.9;
+}
+
+.light-btn {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff2f4;
+  padding: 14px 40px;
+  background-color: #de0000;
+  color: #fff2f4 !important;
+  border: none;
+  border-radius: 70px;
+  transition: 0.2s;
+  background-color: #fff2f4;
+  color: #de0000 !important;
+}
+.light-btn:hover {
+  background-color: #660505;
+  color: #fff2f4;
+}
+.light-btn:hover {
+  background-color: #de0000;
+  color: #fff2f4 !important;
+}
+
+.btn-sm {
+  font-size: 14px !important;
+  padding: 10px 22px !important;
+  font-weight: 500 !important;
+}
+
+.ccard {
+  padding: 20px;
+  background-color: #fff2f4;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 15, 0.2);
+}
+.ccard .fa-check {
+  color: #de0000;
+  margin-right: 10px;
+}
+.ccard ul {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #0f0000;
+}
+.ccard ul li {
+  line-height: 34px;
+}
+
+.move-up {
+  bottom: 0px !important;
+}
+
+.overflowy-scroll {
+  overflow-y: scroll !important;
+}
+
+@keyframes move-forever1 {
+  0% {
+    transform: translate(85px, 0%);
+  }
+  100% {
+    transform: translate(-90px, 0%);
+  }
+}
+@keyframes move-forever2 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+@keyframes move-forever3 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+@keyframes move-updown {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 15px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes scale-updown {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(-100px);
+  }
+  50% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(-100px);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(-100px);
+  }
+}
+.space {
+  padding-top: 1000px;
+  padding-bottom: 1000px;
+}
+
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  filter: blur(25px);
+}
+
+.darkmode-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #de0000;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  color: #fff2f4;
+  z-index: 99;
+  transition: 0.2s;
+  opacity: 0.9;
+}
+.darkmode-btn:hover {
+  background: #660505;
+}
+
+#home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 0;
+}
+#home .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#home .container .logo {
+  width: 140px;
+}
+#home .container .title {
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: #0f0000;
+  margin: 20px 0;
+  text-align: center;
+}
+#home .container .registration-form {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 28px 24px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  width: 560px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #0f0000;
+}
+#home .container .registration-form .form-title {
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #660505;
+}
+#home .container .registration-form .action-text {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #0f0000;
+}
+#home .container .registration-form form {
+  margin-top: 30px;
+}
+#home .container .registration-form form #phone-field {
+  letter-spacing: 1px;
+}
+#home .container .registration-form form .form-text {
+  color: #777070;
+}
+#home .container .registration-form form .form-control {
+  padding: 10px 15px;
+  border-width: 2px;
+}
+#home .container .registration-form form .form-control:not(.is-valid):not(.is-invalid):focus {
+  border-color: #660505;
+}
+#home .container .registration-form form #ticket-input {
+  display: flex;
+  align-items: center;
+}
+#home .container .registration-form form #ticket-input label {
+  margin: 0;
+  margin-right: 5px;
+}
+#home .container .registration-form form #ticket-input input {
+  margin-left: 5px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  padding: 5px;
+  text-align: center;
+}
+#home .container .registration-form form #ticket-input input:focus {
+  border: 2px solid #660505;
+  box-shadow: none;
+}
+#home .container .registration-form form #ticket-input button {
+  height: 30px;
+  width: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  border: none;
+  color: #fff2f4;
+  margin-left: 5px;
+  transition: 0.2s;
+}
+#home .container .registration-form form #ticket-input button:hover {
+  background: #660505;
+}
+#home .container .registration-form form .ticket-price {
+  font-family: "Nunito", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #de0000;
+  text-align: center;
+}
+#home .container .registration-form form #pay-button {
+  width: 100%;
+  background: #d90070;
+  color: #fff2f4;
+  font-weight: 600;
+  font-size: 22px;
+  padding: 10px;
+}
+#home .container .registration-form form #pay-button img {
+  width: 40px;
+  margin-right: 5px;
+}/*# sourceMappingURL=app.css.map */

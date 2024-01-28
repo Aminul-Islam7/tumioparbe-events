@@ -1,0 +1,162 @@
+@import "resets";
+@import "presets";
+
+#particles {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+	filter: blur(25px);
+}
+
+.darkmode-btn {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	background: $red;
+	border-radius: 10px;
+	border: none;
+	font-size: 18px;
+	width: 40px;
+	height: 40px;
+	color: $white;
+	z-index: 99;
+	transition: 0.2s;
+	opacity: 0.9;
+
+	&:hover {
+		background: $darkred;
+	}
+}
+
+#home {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	padding: 40px 0;
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.logo {
+			width: 140px;
+		}
+
+		.title {
+			@include font(Architects Daughter, 40px, 800, $black);
+			margin: 20px 0;
+			text-align: center;
+		}
+
+		.registration-form {
+			background: rgba(255, 255, 255, 0.7);
+			border-radius: 10px;
+			padding: 28px 24px;
+			box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+			width: 560px;
+
+			@include font();
+
+			.form-title {
+				text-align: center;
+				@include font(Nunito, 36px, 800, $darkred);
+			}
+			.action-text {
+				text-align: center;
+				@include font(Poppins, 18px, 300, $black);
+			}
+
+			form {
+				margin-top: 30px;
+
+				#phone-field {
+					letter-spacing: 1px;
+				}
+				.form-text {
+					color: $grey;
+				}
+
+				.form-control {
+					padding: 10px 15px;
+					border-width: 2px;
+				}
+
+				.form-control:not(.is-valid):not(.is-invalid) {
+					&:focus {
+						border-color: $darkred;
+					}
+				}
+
+				#ticket-input {
+					display: flex;
+					align-items: center;
+
+					label {
+						margin: 0;
+						margin-right: 5px;
+					}
+
+					input {
+						margin-left: 5px;
+						width: 36px;
+						height: 36px;
+						border: none;
+						border-radius: 5px;
+						background: transparent;
+						padding: 5px;
+						text-align: center;
+
+						&:focus {
+							border: 2px solid $darkred;
+							box-shadow: none;
+						}
+					}
+
+					// input::-webkit-inner-spin-button,
+					// input::-webkit-outer-spin-button {
+					// 	-webkit-appearance: none;
+					// 	margin: 0;
+					// }
+
+					button {
+						height: 30px;
+						width: 30px;
+						background: rgba(0, 0, 0, 0.5);
+						border-radius: 5px;
+						border: none;
+						color: $white;
+						margin-left: 5px;
+						transition: 0.2s;
+
+						&:hover {
+							background: $darkred;
+						}
+					}
+				}
+				.ticket-price {
+					@include font(Nunito, 19px, 700, $red);
+					text-align: center;
+				}
+
+				#pay-button {
+					width: 100%;
+					background: #d90070;
+					color: $white;
+					font-weight: 600;
+					font-size: 22px;
+					padding: 10px;
+
+					img {
+						width: 40px;
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+	}
+}

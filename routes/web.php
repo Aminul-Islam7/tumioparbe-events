@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+// Homepage (Registration Form)
+Route::get('/', [RegistrationController::class, 'create'])->name('home');
+
+// Store Registration Form data
+Route::post('/', [RegistrationController::class, 'store']);

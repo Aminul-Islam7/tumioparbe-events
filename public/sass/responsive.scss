@@ -1,0 +1,120 @@
+/* 320-575 => Extra Small -> col
+576-767 => Small -> col-sm
+768-991 => Medium -> col-md
+992-1199 => large -> col-lg
+1200-1399 => Extra large col-xl 
+1400 => Extra Extra large -> col-xxl */
+@import "resets";
+@import "presets";
+
+@media (max-width: 575px) {
+	#home {
+		.container {
+			.registration-form {
+				width: 100%;
+			}
+		}
+	}
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+}
+
+@media (min-width: 1400px) {
+}
+
+body.dark-mode {
+	background-color: $black;
+
+	// ::placeholder {
+	// 	color: $white !important;
+	// 	opacity: 0.5 !important;
+	// }
+
+	#particles {
+		opacity: 0.5;
+	}
+
+	// .text {
+	// 	color: $white !important;
+	// }
+
+	#home {
+		.container {
+			.title {
+				color: $white;
+			}
+
+			.registration-form {
+				background: rgba(255, 242, 242, 0.07);
+
+				.form-title {
+					color: $white;
+				}
+				.action-text {
+					color: $white;
+				}
+
+				form {
+					.form-label {
+						color: $white;
+					}
+					.form-control {
+						background-color: $black;
+						color: $white;
+					}
+
+					.form-control:not(.is-valid):not(.is-invalid) {
+						border-color: $white-overlay;
+
+						&:focus {
+							border: 2px solid $lightred;
+						}
+					}
+
+					.form-text {
+						color: $white;
+						opacity: 0.65;
+					}
+
+					.input-group {
+						.input-group-text {
+							background: rgba(15, 0, 0, 0.5);
+							border-color: $white-overlay;
+							color: $white;
+						}
+					}
+
+					#ticket-input {
+						input {
+							border-color: rgba(255, 255, 255, 0.5);
+							color: $white;
+
+							&:focus {
+								border: 2px solid $lightred;
+							}
+						}
+
+						button {
+							background: rgba(255, 255, 255, 0.4);
+							color: $white;
+
+							&:hover {
+								background: $red;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
