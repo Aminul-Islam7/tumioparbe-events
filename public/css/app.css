@@ -225,7 +225,10 @@ a {
   color: #de0000;
   transition: 0.2s;
 }
-a:hover, a:visited, a:active {
+a:visited {
+  color: #de0000;
+}
+a:hover, a:active {
   color: #660505;
 }
 

@@ -26,6 +26,9 @@
       <div class="mb-4">
         <label for="district-field" class="form-label">District</label>
         <input type="text" class="form-control" id="district-field" name="district" placeholder="Dhaka" value="{{old('district')}}">
+        <div lang="bn" class="invalid-feedback">
+          জেলার নামটি সঠিক ভাবে লিখুন।
+        </div>
         <div id="districtHelp" lang="bn" class="form-text">আপনি কোন জেলায় থাকেন?</div>
       </div>
 

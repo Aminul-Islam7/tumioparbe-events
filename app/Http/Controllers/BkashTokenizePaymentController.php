@@ -22,7 +22,7 @@ class BkashTokenizePaymentController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:50'],
             'phone' => ['required', 'regex:/^01[3-9]\d{8}$/'],
-            'district' => ['string', 'max:50'],
+            'district' => ['max:50'],
             'tickets' => ['required', 'integer', 'min:1'],
         ],
         [
@@ -69,6 +69,31 @@ class BkashTokenizePaymentController extends Controller
         // paymentID=your_payment_id&status=success&apiVersion=1.2.0-beta
         //using paymentID find the account number for sending params
 
+
+        $name = Session::get('name');
+        $phone = Session::get('phone');
+        $district = Session::get('district');
+        $tickets = Session::get('tickets');
+        $payID = $request->paymentID;
+
+
+        $registration = new Registration;
+        
+        
+
+        $registration->name = $name;
+        $registration->phone = $phone;
+        $registration->district = $district;
+        $registration->tickets = $tickets;
+        $registration->pay_id = $payID;
+        $registration->status = $request->status;
+
+        Session::forget('name');
+        Session::forget('phone');
+        Session::forget('district');
+        Session::forget('tickets');
+
+
         if ($request->status == 'success'){
             $response = BkashPaymentTokenize::executePayment($request->paymentID);
             
@@ -84,42 +109,21 @@ class BkashTokenizePaymentController extends Controller
                  * paymentID and trxID
                  * */
 
-                $name = Session::get('name');
-                $phone = Session::get('phone');
-                $district = Session::get('district');
-                $tickets = Session::get('tickets');
+                $lastRecordWithRegNo = Registration::whereNotNull('reg_no')->latest()->first();
 
-                Session::forget('name');
-                Session::forget('phone');
-                Session::forget('district');
-                Session::forget('tickets');
-
-                // dd(array_keys($response));
-
-                $registration = new Registration;
-
-                $lastRecord = Registration::latest()->first();
-
-                if ($lastRecord) {
-                    $lastId = $lastRecord->id;
-                    
+                if ($lastRecordWithRegNo) {
+                    $lastRegNo = $lastRecordWithRegNo->reg_no;
                 } else {
-                    $lastId = 0;
+                    $lastRegNo = 24000;
                 }
 
-                $registration->reg_no = 24000 + $lastId + 1;
-
-                $registration->name = $name;
-                $registration->phone = $phone;
-                $registration->district = $district;
-                $registration->tickets = $tickets;
+                $registration->reg_no = $lastRegNo + 1;
 
                 $registration->amount = $response["amount"];
                 $registration->bkash_number = $response["customerMsisdn"];
                 $registration->trx_id = $response["trxID"];
                 $registration->payer_ref = $response["payerReference"];
                 $registration->invoice_no = $response["merchantInvoiceNumber"];
-                $registration->pay_id = $response["paymentID"];
                 $registration->status = $response["statusMessage"];
                 $registration->status_code = $response["statusCode"];
                 $registration->intent = $response["intent"];
@@ -129,13 +133,23 @@ class BkashTokenizePaymentController extends Controller
                 $registration->save();
 
                 // return BkashPaymentTokenize::success('Thank you for your payment', $response['trxID']);
-                return redirect()->route('success', ['paymentID' => $response['paymentID']]);
+                return redirect()->route('success', ['payID' => $response['paymentID']]);
             }
             return BkashPaymentTokenize::failure($response['statusMessage']);
         }else if ($request->status == 'cancel'){
-            return BkashPaymentTokenize::cancel('Your payment is canceled');
+            
+            $registration->save();
+            
+            return redirect()->route('cancelled', ['payID' => $payID]);
+
+            // return BkashPaymentTokenize::cancel('Your payment is canceled');
         }else{
-            return BkashPaymentTokenize::failure('Your transaction is failed');
+
+            $registration->save();
+
+            return redirect()->route('failed', ['payID' => $payID]);
+
+            // return BkashPaymentTokenize::failure('Your transaction is failed');
         }
     }
 

@@ -19,7 +19,7 @@ $seats = $numTo->bnNum($tickets);
         <br>
         আমরা আপনার পেমেন্ট রিসিভ করেছি।
         <br>
-        আপনাদের জন্য <strong>{{ $seats }} টি</strong> সিট বরাদ্দ করা হয়েছে।
+        আপনাদের জন্য <strong>{{ $seats }} টি সিট</strong> বরাদ্দ করা হয়েছে।
       </p>
 
       <p class="reg-num">

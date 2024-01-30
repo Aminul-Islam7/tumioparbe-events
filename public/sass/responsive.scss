@@ -48,6 +48,19 @@ body.dark-mode {
 	// 	color: $white !important;
 	// }
 
+	a {
+		color: $lightred;
+
+		&:visited {
+			color: $lightred;
+		}
+
+		&:hover,
+		&:active {
+			color: $red;
+		}
+	}
+
 	#home {
 		.container {
 			.title {

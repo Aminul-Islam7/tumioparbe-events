@@ -43,8 +43,11 @@ a {
 	color: $red;
 	transition: 0.2s;
 
+	&:visited {
+		color: $red;
+	}
+
 	&:hover,
-	&:visited,
 	&:active {
 		color: $darkred;
 	}

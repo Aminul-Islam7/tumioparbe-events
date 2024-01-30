@@ -231,7 +231,10 @@ a {
   color: #de0000;
   transition: 0.2s;
 }
-a:hover, a:visited, a:active {
+a:visited {
+  color: #de0000;
+}
+a:hover, a:active {
   color: #660505;
 }
 
@@ -539,6 +542,15 @@ body.dark-mode {
 }
 body.dark-mode #particles {
   opacity: 0.5;
+}
+body.dark-mode a {
+  color: #ff9999;
+}
+body.dark-mode a:visited {
+  color: #ff9999;
+}
+body.dark-mode a:hover, body.dark-mode a:active {
+  color: #de0000;
 }
 body.dark-mode #home .container .title {
   color: #fff2f4;

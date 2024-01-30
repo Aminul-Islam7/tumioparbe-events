@@ -3,6 +3,7 @@
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BkashTokenizePaymentController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Registration;
 
 
 /*
@@ -16,18 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [RegistrationController::class, 'index'])->name('dashboard');
 });
 
 
@@ -47,5 +46,8 @@ Route::post('/bkash/create-payment', [BkashTokenizePaymentController::class,'cre
 Route::get('/bkash/callback', [BkashTokenizePaymentController::class,'callBack'])->name('bkash-callBack');
 
 
-Route::get('/registration-success/{payID}', [RegistrationController::class, 'success'])->name('success');
+Route::get('/registration-successful/{payID}', [RegistrationController::class, 'success'])->name('success');
 
+Route::get('/payment-cancelled/{payID}', [RegistrationController::class, 'cancel'])->name('cancelled');
+
+Route::get('/payment-failed/{payID}', [RegistrationController::class, 'failure'])->name('failed');
