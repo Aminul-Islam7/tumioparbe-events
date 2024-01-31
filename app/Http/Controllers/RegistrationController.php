@@ -24,6 +24,22 @@ class RegistrationController extends Controller
         ]);
     }
 
+    public function settings()
+    {
+        $registrations = Registration::orderBy('reg_no', 'desc')->get();
+        $count = Registration::whereNotNull('reg_no')->count();
+        $totalTickets = Registration::whereNotNull('reg_no')->sum('tickets');
+        $totalFund = Registration::whereNotNull('reg_no')->sum('amount');
+
+
+        return view('registrations.index', [
+            'registrations' => $registrations,
+            'count' => $count,
+            'totalTickets' => $totalTickets,
+            'totalFund' => $totalFund
+        ]);
+    }
+
     public function search(Request $request)
     {
         $registrations = Registration::where('reg_no', 'like', '%'. $request->search_string . '%')

@@ -1,3 +1,13 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
 .invisible {
 	display: none;
 }
@@ -139,6 +149,53 @@
 	}
 
 	.table-foot {
+	}
+}
+
+#settings {
+	width: 100%;
+	padding: 30px;
+
+	.ticket-price-form {
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		input {
+			width: 65px;
+			padding: 5px;
+			border-radius: 10px;
+			border: 2px solid transparent;
+			background: transparent;
+			box-shadow: none;
+			letter-spacing: 1px;
+			text-align: center;
+
+			&:focus {
+				border-color: #4f46e5;
+			}
+		}
+		button {
+			margin-left: 15px;
+			padding: 5px 10px;
+			border-radius: 5px;
+			border: 2px solid transparent;
+			background: rgb(255, 255, 255, 0.8);
+			box-shadow: none;
+			letter-spacing: 1px;
+			text-align: center;
+			color: #111827;
+			font-size: 14px;
+			font-weight: 600;
+			transition: 0.1s;
+
+			&:hover {
+				background: #4f46e5;
+				background: rgb(255, 255, 255, 0.9);
+			}
+		}
 	}
 }
 

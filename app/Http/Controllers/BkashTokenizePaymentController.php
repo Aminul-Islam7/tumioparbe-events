@@ -6,6 +6,7 @@ use Karim007\LaravelBkashTokenize\Facade\BkashPaymentTokenize;
 use Karim007\LaravelBkashTokenize\Facade\BkashRefundTokenize;
 use App\Models\Registration;
 use Illuminate\Support\Facades\Session;
+use tidy;
 
 class BkashTokenizePaymentController extends Controller
 {
@@ -35,7 +36,8 @@ class BkashTokenizePaymentController extends Controller
         $phone = $request->phone;
         $district = $request->district;
         $tickets = $request->tickets;
-        $amount = 1000*$tickets;
+        $ticketPrice = config('settings.ticketPrice');
+        $amount = $tickets*$ticketPrice;
         
         Session::put('name', $name);
         Session::put('phone', $phone);

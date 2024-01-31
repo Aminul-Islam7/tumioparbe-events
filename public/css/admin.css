@@ -1,3 +1,13 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .invisible {
   display: none;
 }
@@ -116,6 +126,49 @@
 #table .table-body .row:hover {
   background: rgba(255, 255, 255, 0.05);
 }
+#settings {
+  width: 100%;
+  padding: 30px;
+}
+#settings .ticket-price-form {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#settings .ticket-price-form input {
+  width: 65px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background: transparent;
+  box-shadow: none;
+  letter-spacing: 1px;
+  text-align: center;
+}
+#settings .ticket-price-form input:focus {
+  border-color: #4f46e5;
+}
+#settings .ticket-price-form button {
+  margin-left: 15px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: none;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.1s;
+}
+#settings .ticket-price-form button:hover {
+  background: #4f46e5;
+  background: rgba(255, 255, 255, 0.9);
+}
+
 @media (prefers-color-scheme: light) {
   #table .table-head .title h2 {
     color: rgba(0, 0, 0, 0.4);

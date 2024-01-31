@@ -131,8 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Function to detect system preference and set initial mode
 	function setInitialMode() {
-		const prefersDarkMode =
-			window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+		const prefersDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 		const userPreference = localStorage.getItem("darkMode");
 
 		// Set initial mode based on user preference or system preference
@@ -175,7 +174,7 @@ ticketsField.addEventListener("input", () => {
 
 // Update total price function
 function updateTotalPrice() {
-	const ticketPrice = 1000; // Assuming ticket price is $1000
+	const ticketPrice = document.querySelector("#ticket-price").value;
 	const inputValue = parseInt(ticketsField.value) || 0; // Default to 0 if NaN
 	const totalPrice = inputValue * ticketPrice;
 	totalPriceSpan.textContent = totalPrice;
@@ -190,12 +189,7 @@ $(document).ready(function () {
 	$(document).on("keyup change focus blur", "#phone-field", function () {
 		let number = $(this).val();
 
-		if (
-			(number.length >= 1 && number[0] !== "0") ||
-			(number.length >= 2 && number[1] !== "1") ||
-			(number.length >= 3 && !/^[3-9]$/.test(number[2])) ||
-			number.length > 11
-		) {
+		if ((number.length >= 1 && number[0] !== "0") || (number.length >= 2 && number[1] !== "1") || (number.length >= 3 && !/^[3-9]$/.test(number[2])) || number.length > 11) {
 			$(this).removeClass("is-valid");
 			$(this).addClass("is-invalid");
 		} else {
@@ -220,11 +214,7 @@ $(document).ready(function () {
 
 // Remove all :hover stylesheets on mobile devices
 function hasTouch() {
-	return (
-		"ontouchstart" in document.documentElement ||
-		navigator.maxTouchPoints > 0 ||
-		navigator.msMaxTouchPoints > 0
-	);
+	return "ontouchstart" in document.documentElement || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 }
 
 if (hasTouch()) {

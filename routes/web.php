@@ -28,6 +28,16 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [RegistrationController::class, 'index'])->name('dashboard');
     Route::get('/search-entry' , [RegistrationController::class, 'search'])->name('search-entry');
+
+    // Route::get('/settings', function() {
+    //     return view('registrations.settings');
+    // })->name('settings');
+
+    // Route::post('/update-ticketprice', function() {
+    //     config(['settings.ticketPrice' => 2000]);
+    //     dd(config('settings.ticketPrice'));
+    //     // return redirect()->back();
+    // })->name('update-ticketprice');
 });
 
 
