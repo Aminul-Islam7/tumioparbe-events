@@ -46,6 +46,8 @@
     @stack('modals')
 
     @livewireScripts
+
+    @include('search_js')
 </body>
 
 </html>

@@ -10,7 +10,7 @@ class RegistrationController extends Controller
 {
     public function index()
     {
-        $registrations = Registration::all();
+        $registrations = Registration::orderBy('reg_no', 'desc')->get();
         $count = Registration::whereNotNull('reg_no')->count();
         $totalTickets = Registration::whereNotNull('reg_no')->sum('tickets');
 
@@ -19,6 +19,24 @@ class RegistrationController extends Controller
             'count' => $count,
             'totalTickets' => $totalTickets
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        $registration = Registration::where('reg_no', 'like', '%'. $request->search_string . '%')
+                                    ->orWhere('name', 'like', '%' . $request->search_string . '%')
+                                    ->orWhere('phone', 'like', '%' . $request->search_string . '%')
+                                    ->orWhere('district', 'like', '%' . $request->search_string . '%')
+                                    ->orWhere('bkash_number', 'like', '%' . $request->search_string . '%')
+                                    ->orWhere('trx_id', 'like', '%' . $request->search_string . '%')
+                                    ->orderBy('reg_no', 'desc')
+                                    ->get();
+
+        // if ($registration->count() > 0) {
+        //     return view('registrations.search', compact('registration'))->render();
+        // }
+
+        return view('registrations.search', compact('registration'));
     }
 
     public function create()

@@ -27,6 +27,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [RegistrationController::class, 'index'])->name('dashboard');
+    Route::get('/search-entry' , [RegistrationController::class, 'search'])->name('search-entry');
 });
 
 
