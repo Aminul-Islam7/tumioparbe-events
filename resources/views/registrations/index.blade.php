@@ -10,7 +10,8 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 {{--
                 <x-welcome /> --}}
-                <x-registrations :entries="$registrations" :count="$count" :totalTickets="$totalTickets" />
+                <x-registrations :entries="$registrations" :count="$count" :totalTickets="$totalTickets"
+                    :totalFund="$totalFund" />
             </div>
         </div>
     </div>

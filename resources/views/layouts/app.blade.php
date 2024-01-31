@@ -18,6 +18,10 @@
     <!-- Styles -->
     @livewireStyles
 
+    <link rel="stylesheet" href="{{asset('css/all.css')}}">
+    <link rel="stylesheet" href="{{asset('css/sharp-light.css')}}">
+    <link rel="stylesheet" href="{{asset('css/sharp-regular.css')}}">
+    <link rel="stylesheet" href="{{asset('css/sharp-solid.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
     <link rel="icon" href="{{asset('images/logo.ico')}}">
 </head>
@@ -47,7 +51,7 @@
 
     @livewireScripts
 
-    @include('search_js')
+    @include('script_js')
 </body>
 
 </html>
