@@ -22,8 +22,8 @@
     <div class="table-body">
         <div class="row head">
             <div class="cell">Reg No.</div>
-            <div class="cell">Seats</div>
             <div class="cell">Name</div>
+            <div class="cell">Seats</div>
             <div class="cell hide">Contact No.</div>
             <div class="cell hide">District</div>
             <div class="cell hide">Paid</div>
