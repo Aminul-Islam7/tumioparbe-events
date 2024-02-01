@@ -7,6 +7,7 @@ use Karim007\LaravelBkashTokenize\Facade\BkashRefundTokenize;
 use App\Models\Registration;
 use Illuminate\Support\Facades\Session;
 use tidy;
+use GuzzleHttp\Client;
 
 class BkashTokenizePaymentController extends Controller
 {
@@ -133,6 +134,20 @@ class BkashTokenizePaymentController extends Controller
                 $registration->pay_execute_time = $response["paymentExecuteTime"];
 
                 $registration->save();
+
+
+                $url = 'http://api.greenweb.com.bd/api.php';
+                $message =  sprintf("Your registration is confirmed for %d seats!\r\n\r\nRegistration Number: %d\rg\nPlease retain this for reference.\r\n\r\nThank you,\r\nতুমিও পারবে।", $tickets, $registration->reg_no);
+                $data = array(
+                                'to' => $phone,
+                                'message' => $message,
+                                'token' => '96480520021706829602bb4e08e044c5f8d1efeab8608f09ce33'
+                            );
+
+                $client = new Client();
+                $smsResponse = $client->post($url, ['form_params' => $data]);
+
+                dd($smsResponse->getBody()->getContents());
 
                 // return BkashPaymentTokenize::success('Thank you for your payment', $response['trxID']);
                 return redirect()->route('success', ['payID' => $response['paymentID']]);
