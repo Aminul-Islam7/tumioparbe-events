@@ -66,7 +66,7 @@ class RegistrationController extends Controller
     {
         $record = Registration::where('pay_id', $payID)->first();
 
-        if (!$record) {
+        if (!$record || !($record->status == 'Successful')) {
             abort(404);
         }
 
