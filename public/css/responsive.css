@@ -533,8 +533,20 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media (max-width: 575px) {
+  #home .container .logo {
+    width: 100px;
+  }
+  #home .container .title {
+    font-size: 29px;
+  }
   #home .container .box {
     width: 100%;
+  }
+  #home .container .box .box-title {
+    font-size: 28px;
+  }
+  #home .container .box .action-text {
+    font-size: 17px;
   }
 }
 body.dark-mode {
