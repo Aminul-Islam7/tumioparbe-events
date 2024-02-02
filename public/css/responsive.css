@@ -537,7 +537,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100px;
   }
   #home .container .title {
-    font-size: 29px;
+    font-size: 26px;
   }
   #home .container .box {
     width: 100%;
@@ -565,6 +565,9 @@ body.dark-mode a:hover, body.dark-mode a:active {
   color: #de0000;
 }
 body.dark-mode #home .container .title {
+  color: #fff2f4;
+}
+body.dark-mode #home .container .event-details {
   color: #fff2f4;
 }
 body.dark-mode #home .container .box {
@@ -620,5 +623,14 @@ body.dark-mode #home .info {
   color: #fff2f4;
 }
 body.dark-mode #home .info .reg-num {
+  color: #ff9999;
+}
+body.dark-mode #home footer {
+  color: #fff2f4;
+}
+body.dark-mode #home footer a {
+  color: #fff2f4;
+}
+body.dark-mode #home footer a:hover {
   color: #ff9999;
 }/*# sourceMappingURL=responsive.css.map */

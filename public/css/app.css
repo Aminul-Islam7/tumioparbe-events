@@ -557,6 +557,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 #home {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -578,9 +579,29 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 20px 0;
   text-align: center;
 }
+#home .container .event-details {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #0f0000;
+}
+#home .container .event-details p {
+  max-width: 450px;
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+#home .container .event-details p i {
+  text-align: center;
+  width: 36px;
+}
+#home .container .event-details p span {
+  width: calc(100% - 30px);
+}
 #home .container .box {
   background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
+  margin: 20px 0;
   padding: 28px 24px;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
   width: 560px;
@@ -704,6 +725,13 @@ input[type=number]::-webkit-outer-spin-button {
   opacity: 0;
   transition: 0.2s;
 }
+#home .map {
+  margin-top: 10px;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+}
 #home .info .info-text {
   margin-top: 20px;
   font-size: 20px;
@@ -717,4 +745,22 @@ input[type=number]::-webkit-outer-spin-button {
   text-align: center;
   color: #de0000;
   font-weight: 600;
+}
+#home footer {
+  margin-top: 25px;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: #660505;
+  opacity: 0.7;
+  text-align: center;
+}
+#home footer a {
+  color: #660505;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+#home footer a:hover {
+  color: #de0000;
 }/*# sourceMappingURL=app.css.map */

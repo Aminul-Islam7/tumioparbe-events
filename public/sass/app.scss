@@ -33,6 +33,7 @@
 
 #home {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
@@ -53,9 +54,30 @@
 			text-align: center;
 		}
 
+		.event-details {
+			@include font(Poppins, 16px, 300, $black);
+
+			p {
+				max-width: 450px;
+				display: flex;
+				align-items: center;
+				margin: 5px 0;
+				// justify-content: center;
+				i {
+					text-align: center;
+					width: 36px;
+				}
+				span {
+					//width = calculate 100% - 30px
+					width: calc(100% - 30px);
+				}
+			}
+		}
+
 		.box {
 			background: rgba(255, 255, 255, 0.7);
 			border-radius: 10px;
+			margin: 20px 0;
 			padding: 28px 24px;
 			box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
 			width: 560px;
@@ -195,6 +217,14 @@
 		}
 	}
 
+	.map {
+		margin-top: 10px;
+		width: 100%;
+		height: 400px;
+		overflow: hidden;
+		border-radius: 10px;
+	}
+
 	.info {
 		.info-text {
 			margin-top: 20px;
@@ -209,6 +239,23 @@
 			text-align: center;
 			color: $red;
 			font-weight: 600;
+		}
+	}
+	footer {
+		margin-top: 25px;
+		@include font(Nunito, 12px, 300, $darkred);
+		opacity: 0.7;
+		text-align: center;
+
+		a {
+			color: $darkred;
+			text-decoration: none;
+			font-weight: 600;
+			transition: 0.2s;
+
+			&:hover {
+				color: $red;
+			}
 		}
 	}
 }
