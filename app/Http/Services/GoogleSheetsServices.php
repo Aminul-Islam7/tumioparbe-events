@@ -25,7 +25,7 @@ class GoogleSheetsServices
     $client->setApplicationName('Tumio Parbe Events - Sheets');
     $client->setRedirectUri('http://localhost:8000');
     $client->setScopes(Sheets::SPREADSHEETS);
-    $client->setAuthConfig(storage_path('tumio-parbe-events-sheets-4930b0ff2f51.json'));
+    $client->setAuthConfig(storage_path('tumio-parbe-events-sheets-b7be9936447f.json'));
     $client->setAccessType('offline');
     return $client;
   }
@@ -41,13 +41,12 @@ class GoogleSheetsServices
     $body = new ValueRange([
       'values' => $values
     ]);
-    
+
     $params = [
       'valueInputOption' => 'RAW'
     ];
 
     $result = $this->service->spreadsheets_values->update($this->documentId, $this->range, $body, $params);
-
   }
 
   public function appendSheet($values)
@@ -55,12 +54,11 @@ class GoogleSheetsServices
     $body = new ValueRange([
       'values' => $values
     ]);
-    
+
     $params = [
       'valueInputOption' => 'RAW'
     ];
 
     $result = $this->service->spreadsheets_values->append($this->documentId, $this->range, $body, $params);
-
   }
 }
