@@ -21,14 +21,19 @@
     <hr>
     <div class="table-body">
         <div class="row head">
-            <div class="cell">Reg No.</div>
-            <div class="cell">Name</div>
-            <div class="cell">Seats</div>
-            <div class="cell hide">Contact No.</div>
-            <div class="cell hide">District</div>
-            <div class="cell hide">Paid</div>
-            <div class="cell hide">bKash No.</div>
-            <div class="cell hide">Trx ID</div>
+            <div class="cell c1">Reg No.</div>
+            <div class="cell c2">Name</div>
+            <div class="cell c3">Seats</div>
+            <div class="cell c4 hide">Contact No.</div>
+            <div class="cell c5 hide">District</div>
+            <div class="cell c6 hide">
+                Amount Paid
+                <p class="small">Date - Time</p>
+            </div>
+            <div class="cell c7 hide">
+                bKash No.
+                <p class="small">Transaction ID</p>
+            </div>
         </div>
         <div class="search" id="data-rows">
             <x-search-rows :entries="$entries" :count="$count" :totalTickets="$totalTickets" />

@@ -12,33 +12,6 @@ input[type="number"] {
 	display: none;
 }
 
-@media (max-width: 576px) {
-	.hide {
-		display: none;
-	}
-	#table {
-		.table-head {
-			.title {
-				width: 100%;
-				text-align: center;
-			}
-			.fund {
-				width: 100%;
-			}
-			.search {
-				display: flex;
-				justify-content: center;
-				width: 100%;
-				margin-top: 15px;
-				input {
-					width: 100% !important;
-					margin: auto;
-				}
-			}
-		}
-	}
-}
-
 #table {
 	width: 100%;
 	padding: 30px;
@@ -109,17 +82,46 @@ input[type="number"] {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			padding: 15px 0;
+			padding: 8px 0;
 			border: 2px solid rgb(255, 255, 255, 0.2);
 			border-top: none;
 			transition: 0.1s;
 
 			.cell {
-				width: 100%;
+				// width: 100%;
 				text-align: center;
 				color: rgb(255, 255, 255, 0.8);
 				font-size: 14px;
-				padding: 0 7px;
+				padding: 0 10px;
+
+				.small {
+					font-size: 12px;
+					color: rgb(255, 255, 255, 0.65);
+				}
+
+				//9 + 25 + 7 +13 +13 + 20 + 13
+
+				&.c1 {
+					width: 9%;
+				}
+				&.c2 {
+					width: 25%;
+				}
+				&.c3 {
+					width: 7%;
+				}
+				&.c4 {
+					width: 13%;
+				}
+				&.c5 {
+					width: 13%;
+				}
+				&.c6 {
+					width: 20%;
+				}
+				&.c7 {
+					width: 13%;
+				}
 			}
 
 			&.head {
@@ -132,6 +134,10 @@ input[type="number"] {
 					color: #ffffff;
 					font-weight: 600;
 					font-size: 16px;
+
+					.small {
+						color: rgb(255, 255, 255, 0.8);
+					}
 				}
 
 				&:hover {
@@ -244,6 +250,10 @@ input[type="number"] {
 				}
 				.cell {
 					color: rgba(0, 0, 0, 0.5);
+
+					.small {
+						color: rgba(0, 0, 0, 0.3);
+					}
 				}
 
 				&:hover {
@@ -255,6 +265,49 @@ input[type="number"] {
 		.table-foot {
 			.fund {
 				color: rgba(0, 0, 0, 0.2);
+			}
+		}
+	}
+}
+
+@media (max-width: 860px) {
+	.hide {
+		display: none;
+	}
+	#table {
+		.table-head {
+			.title {
+				width: 100%;
+				text-align: center;
+			}
+			.fund {
+				width: 100%;
+			}
+			.search {
+				display: flex;
+				justify-content: center;
+				width: 100%;
+				margin-top: 15px;
+				input {
+					width: 100% !important;
+					margin: auto;
+				}
+			}
+		}
+
+		.table-body {
+			.row {
+				.cell {
+					&.c1 {
+						width: 25%;
+					}
+					&.c2 {
+						width: 50%;
+					}
+					&.c3 {
+						width: 25%;
+					}
+				}
 			}
 		}
 	}
