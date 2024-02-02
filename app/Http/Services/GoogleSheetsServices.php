@@ -23,7 +23,7 @@ class GoogleSheetsServices
   {
     $client = new Client();
     $client->setApplicationName('Tumio Parbe Events - Sheets');
-    $client->setRedirectUri('http://localhost:8000');
+    $client->setRedirectUri('https://events.tumioparbe.com/');
     $client->setScopes(Sheets::SPREADSHEETS);
     $client->setAuthConfig(storage_path('tumio-parbe-events-sheets-b7be9936447f.json'));
     $client->setAccessType('offline');
