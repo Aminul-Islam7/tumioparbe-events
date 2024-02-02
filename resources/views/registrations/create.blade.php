@@ -4,7 +4,7 @@
     <p class="action-text">Confirm your seats now!</p>
     <form class="needs-validation" action="{{ url('/bkash/create-payment') }}" method="POST">
       @csrf
-      <div class="mb-4">
+      <div class="mb-4 required">
         <label for="name-field" class="form-label">Name</label>
         <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name-field" name="name"
           placeholder="Shamima Akter" value="{{old('name')}}" required>
@@ -13,7 +13,7 @@
         </div>
         <div id="nameHelp" lang="bn" class="form-text">ইংরেজিতে আপনার নাম লিখুন।</div>
       </div>
-      <div class="mb-4">
+      <div class="mb-4 required">
         <label for="phone-field" class="form-label">Contact Number</label>
         <div class="input-group has-validation">
           <span class="input-group-text" id="addon">+88</span>
@@ -35,7 +35,7 @@
         <div id="districtHelp" lang="bn" class="form-text">আপনি কোন জেলায় থাকেন?</div>
       </div>
 
-      <div class="mb-4">
+      <div class="mb-4 required">
 
         <input type="hidden" id="ticket-price" value="{{ config('settings.ticketPrice') }}">
 

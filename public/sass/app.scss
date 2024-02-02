@@ -96,6 +96,13 @@
 			form {
 				margin-top: 30px;
 
+				.required label::after {
+					content: "*";
+					color: $red;
+					margin-left: 3px;
+					font-size: 14px;
+				}
+
 				#phone-field {
 					letter-spacing: 1px;
 				}

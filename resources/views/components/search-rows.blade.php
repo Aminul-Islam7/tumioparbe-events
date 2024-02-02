@@ -21,7 +21,7 @@
   </div>
   <div class="cell c6 hide">
     ৳ {{$entry->amount}}
-    <p class="small">{{$entry->created_at->format('d M Y - h:i A')}}</p>
+    <p class="small">{{$entry->created_at->setTimezone('GMT+6')->format('d M Y - h:i A')}}</p>
   </div>
   <div class="cell c7 hide">
     {{$entry->bkash_number}}

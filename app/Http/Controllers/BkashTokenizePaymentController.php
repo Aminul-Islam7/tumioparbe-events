@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Karim007\LaravelBkashTokenize\Facade\BkashPaymentTokenize;
 use Karim007\LaravelBkashTokenize\Facade\BkashRefundTokenize;
@@ -8,6 +9,7 @@ use App\Models\Registration;
 use Illuminate\Support\Facades\Session;
 use tidy;
 use GuzzleHttp\Client;
+use App\Http\Services\GoogleSheetsServices;
 
 class BkashTokenizePaymentController extends Controller
 {
@@ -17,29 +19,31 @@ class BkashTokenizePaymentController extends Controller
     }
     public function createPayment(Request $request)
     {
-        
+
         // dd($request->all());
 
 
-        $request->validate([
-            'name' => ['required', 'string', 'max:50'],
-            'phone' => ['required', 'regex:/^01[3-9]\d{8}$/'],
-            'district' => ['max:50'],
-            'tickets' => ['required', 'integer', 'min:1'],
-        ],
-        [
-            'name' => 'নামটি সঠিক ভাবে লিখুন।',
-            'phone' => 'ফোন নম্বরটি সঠিক নয়।',
-            'tickets' => 'কমপক্ষে ১ টি টিকেট নিতে হবে।',
-        ]);
-        
+        $request->validate(
+            [
+                'name' => ['required', 'string', 'max:50'],
+                'phone' => ['required', 'regex:/^01[3-9]\d{8}$/'],
+                'district' => ['max:50'],
+                'tickets' => ['required', 'integer', 'min:1'],
+            ],
+            [
+                'name' => 'নামটি সঠিক ভাবে লিখুন।',
+                'phone' => 'ফোন নম্বরটি সঠিক নয়।',
+                'tickets' => 'কমপক্ষে ১ টি টিকেট নিতে হবে।',
+            ]
+        );
+
         $name = $request->name;
         $phone = $request->phone;
         $district = $request->district;
         $tickets = $request->tickets;
         $ticketPrice = config('settings.ticketPrice');
-        $amount = $tickets*$ticketPrice;
-        
+        $amount = $tickets * $ticketPrice;
+
         Session::put('name', $name);
         Session::put('phone', $phone);
         Session::put('district', $district);
@@ -81,8 +85,8 @@ class BkashTokenizePaymentController extends Controller
 
 
         $registration = new Registration;
-        
-        
+
+
 
         $registration->name = $name;
         $registration->phone = $phone;
@@ -97,11 +101,11 @@ class BkashTokenizePaymentController extends Controller
         Session::forget('tickets');
 
 
-        if ($request->status == 'success'){
+        if ($request->status == 'success') {
             $response = BkashPaymentTokenize::executePayment($request->paymentID);
-            
+
             //$response = BkashPaymentTokenize::executePayment($request->paymentID, 1); //last parameter is your account number for multi account its like, 1,2,3,4,cont..
-            if (!$response){ //if executePayment payment not found call queryPayment
+            if (!$response) { //if executePayment payment not found call queryPayment
                 $response = BkashPaymentTokenize::queryPayment($request->paymentID);
                 //$response = BkashPaymentTokenize::queryPayment($request->paymentID,1); //last parameter is your account number for multi account its like, 1,2,3,4,cont..
             }
@@ -135,14 +139,40 @@ class BkashTokenizePaymentController extends Controller
 
                 $registration->save();
 
+                (new GoogleSheetsServices())->appendSheet(
+                    [
+                        // id	reg_no	name	phone	district	tickets	amount	bkash_number	trx_id	payer_ref	invoice_no	pay_id	status	status_code	intent	trx_status	pay_execute_time	created_at    updated_at
+                        [
+                            $registration->id,
+                            $registration->reg_no,
+                            $registration->name,
+                            $registration->phone,
+                            $registration->district,
+                            $registration->tickets,
+                            $registration->amount,
+                            $registration->bkash_number,
+                            $registration->trx_id,
+                            $registration->payer_ref,
+                            $registration->invoice_no,
+                            $registration->pay_id,
+                            $registration->status,
+                            $registration->status_code,
+                            $registration->intent,
+                            $registration->trx_status,
+                            $registration->pay_execute_time,
+                            $registration->created_at,
+                        ],
+                    ]
+                );
 
+                $s = $registration->tickets > 1 ? 's' : '';
                 $url = 'http://api.greenweb.com.bd/api.php';
-                $message =  sprintf("Your registration is confirmed for %d seats!\r\n\r\nRegistration Number: %d\r\nPlease retain this for reference.\r\n\r\nThank you,\r\nতুমিও পারবে।", $tickets, $registration->reg_no);
+                $message =  sprintf("Your registration is confirmed for %d seat%s!\r\n\r\nRegistration Number: %d\r\nPlease retain this for reference.\r\n\r\nThank you,\r\nতুমিও পারবে।", $tickets, $s, $registration->reg_no);
                 $data = array(
-                                'to' => $phone,
-                                'message' => $message,
-                                'token' => '96480520021706829602bb4e08e044c5f8d1efeab8608f09ce33'
-                            );
+                    'to' => $phone,
+                    'message' => $message,
+                    'token' => '96480520021706829602bb4e08e044c5f8d1efeab8608f09ce33'
+                );
 
                 $client = new Client();
                 $smsResponse = $client->post($url, ['form_params' => $data]);
@@ -151,14 +181,14 @@ class BkashTokenizePaymentController extends Controller
                 return redirect()->route('success', ['payID' => $response['paymentID']]);
             }
             return BkashPaymentTokenize::failure($response['statusMessage']);
-        }else if ($request->status == 'cancel'){
-            
+        } else if ($request->status == 'cancel') {
+
             $registration->save();
-            
+
             return redirect()->route('cancelled', ['payID' => $payID]);
 
             // return BkashPaymentTokenize::cancel('Your payment is canceled');
-        }else{
+        } else {
 
             $registration->save();
 
@@ -177,20 +207,20 @@ class BkashTokenizePaymentController extends Controller
 
     public function refund(Request $request)
     {
-        $paymentID='Your payment id';
-        $trxID='your transaction no';
-        $amount=5;
-        $reason='this is test reason';
-        $sku='abc';
+        $paymentID = 'Your payment id';
+        $trxID = 'your transaction no';
+        $amount = 5;
+        $reason = 'this is test reason';
+        $sku = 'abc';
         //response
-        return BkashRefundTokenize::refund($paymentID,$trxID,$amount,$reason,$sku);
+        return BkashRefundTokenize::refund($paymentID, $trxID, $amount, $reason, $sku);
         //return BkashRefundTokenize::refund($paymentID,$trxID,$amount,$reason,$sku, 1); //last parameter is your account number for multi account its like, 1,2,3,4,cont..
     }
     public function refundStatus(Request $request)
     {
-        $paymentID='Your payment id';
-        $trxID='your transaction no';
-        return BkashRefundTokenize::refundStatus($paymentID,$trxID);
+        $paymentID = 'Your payment id';
+        $trxID = 'your transaction no';
+        return BkashRefundTokenize::refundStatus($paymentID, $trxID);
         //return BkashRefundTokenize::refundStatus($paymentID,$trxID, 1); //last parameter is your account number for multi account its like, 1,2,3,4,cont..
     }
 }
