@@ -137,7 +137,7 @@ class BkashTokenizePaymentController extends Controller
 
 
                 $url = 'http://api.greenweb.com.bd/api.php';
-                $message =  sprintf("Your registration is confirmed for %d seats!\r\n\r\nRegistration Number: %d\rg\nPlease retain this for reference.\r\n\r\nThank you,\r\nতুমিও পারবে।", $tickets, $registration->reg_no);
+                $message =  sprintf("Your registration is confirmed for %d seats!\r\n\r\nRegistration Number: %d\r\nPlease retain this for reference.\r\n\r\nThank you,\r\nতুমিও পারবে।", $tickets, $registration->reg_no);
                 $data = array(
                                 'to' => $phone,
                                 'message' => $message,
@@ -146,8 +146,6 @@ class BkashTokenizePaymentController extends Controller
 
                 $client = new Client();
                 $smsResponse = $client->post($url, ['form_params' => $data]);
-
-                dd($smsResponse->getBody()->getContents());
 
                 // return BkashPaymentTokenize::success('Thank you for your payment', $response['trxID']);
                 return redirect()->route('success', ['payID' => $response['paymentID']]);
