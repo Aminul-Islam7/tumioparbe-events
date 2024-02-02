@@ -165,7 +165,7 @@ class BkashTokenizePaymentController extends Controller
                     ]
                 );
 
-                $s = $registration->tickets > 1 ? 's' : '';
+                $s = $registration->tickets > 1 ? "s" : "";
                 $url = 'http://api.greenweb.com.bd/api.php';
                 $message =  sprintf("Your registration is confirmed for %d seat%s!\r\n\r\nRegistration Number: %d\r\nPlease retain this for reference.\r\n\r\nThank you,\r\nতুমিও পারবে।", $tickets, $s, $registration->reg_no);
                 $data = array(
