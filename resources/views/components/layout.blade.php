@@ -57,7 +57,7 @@
 			<div class="event-details">
 				<p class="date">
 					<i class="fa-regular fa-calendar-alt"></i>
-					8 March, 2024
+					8 March, 2024 (Friday)
 				</p>
 				<p class="location">
 					<i class="fa-regular fa-map-marker-alt"></i>
