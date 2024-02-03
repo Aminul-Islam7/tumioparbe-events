@@ -42,18 +42,18 @@ class RegistrationController extends Controller
 
     public function search(Request $request)
     {
-        $registrations = Registration::where('reg_no', 'like', '%'. $request->search_string . '%')
-                                    ->orWhere('name', 'like', '%' . $request->search_string . '%')
-                                    ->orWhere('phone', 'like', '%' . $request->search_string . '%')
-                                    ->orWhere('district', 'like', '%' . $request->search_string . '%')
-                                    ->orWhere('bkash_number', 'like', '%' . $request->search_string . '%')
-                                    ->orWhere('trx_id', 'like', '%' . $request->search_string . '%')
-                                    ->orderBy('reg_no', 'desc')
-                                    ->get();
-                                    
+        $registrations = Registration::where('reg_no', 'like', '%' . $request->search_string . '%')
+            ->orWhere('name', 'like', '%' . $request->search_string . '%')
+            ->orWhere('phone', 'like', '%' . $request->search_string . '%')
+            ->orWhere('district', 'like', '%' . $request->search_string . '%')
+            ->orWhere('bkash_number', 'like', '%' . $request->search_string . '%')
+            ->orWhere('trx_id', 'like', '%' . $request->search_string . '%')
+            ->orderBy('reg_no', 'desc')
+            ->get();
+
         $count = $registrations->count();
         $totalTickets = Registration::whereNotNull('reg_no')->sum('tickets');
-        
+
         return view('registrations.search', compact('registrations', 'count', 'totalTickets'));
     }
 

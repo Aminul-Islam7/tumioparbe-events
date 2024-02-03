@@ -54,7 +54,7 @@ return [
          * Path to service account json file. You can also pass the credentials as an array
          * instead of a file path.
          */
-        'file' => storage_path('tumio-parbe-events-sheets-e192859c9eb2.json'),
+        'file' => storage_path('tumio-parbe-events-sheets-b7be9936447f.json'),
     ],
 
     /*

@@ -66,6 +66,7 @@ class BkashTokenizePaymentController extends Controller
         //store paymentID and your account number for matching in callback request
         // dd($response) //if you are using sandbox and not submit info to bkash use it for 1 response
 
+
         if (isset($response['bkashURL'])) return redirect()->away($response['bkashURL']);
         else return redirect()->back()->with('error-alert2', $response['statusMessage']);
     }
@@ -77,6 +78,8 @@ class BkashTokenizePaymentController extends Controller
         //using paymentID find the account number for sending params
 
 
+        // dd($request->all());
+
         $name = Session::get('name');
         $phone = Session::get('phone');
         $district = Session::get('district');
@@ -85,7 +88,6 @@ class BkashTokenizePaymentController extends Controller
 
 
         $registration = new Registration;
-
 
 
         $registration->name = $name;
@@ -116,6 +118,8 @@ class BkashTokenizePaymentController extends Controller
                  * paymentID and trxID
                  * */
 
+                // dd($response);
+
                 $lastRecordWithRegNo = Registration::whereNotNull('reg_no')->latest()->first();
 
                 if ($lastRecordWithRegNo) {
@@ -139,6 +143,8 @@ class BkashTokenizePaymentController extends Controller
 
                 $registration->save();
 
+                // dd($registration);
+
                 (new GoogleSheetsServices())->appendSheet(
                     [
                         // id	reg_no	name	phone	district	tickets	amount	bkash_number	trx_id	payer_ref	invoice_no	pay_id	status	status_code	intent	trx_status	pay_execute_time	created_at    updated_at
@@ -147,7 +153,7 @@ class BkashTokenizePaymentController extends Controller
                             $registration->reg_no,
                             $registration->name,
                             $registration->phone,
-                            $registration->district,
+                            $registration->district ? $registration->district : "N/A",
                             $registration->tickets,
                             $registration->amount,
                             $registration->bkash_number,
@@ -160,18 +166,20 @@ class BkashTokenizePaymentController extends Controller
                             $registration->intent,
                             $registration->trx_status,
                             $registration->pay_execute_time,
-                            $registration->created_at,
+                            $registration->created_at
                         ],
                     ]
                 );
 
                 $s = $registration->tickets > 1 ? "s" : "";
                 $url = 'http://api.greenweb.com.bd/api.php';
-                $message =  sprintf("Your registration is confirmed for %d seat%s!\r\n\r\nRegistration Number: %d\r\nPlease retain this for reference.\r\n\r\nThank you,\r\nতুমিও পারবে।", $tickets, $s, $registration->reg_no);
+                $message =  sprintf("Your registration is confirmed for %d seat%s!\r\n\r\nRegistration Number: %d\r\nPlease keep this for reference.\r\n\r\nThank you,\r\nতুমিও পারবে।", $tickets, $s, $registration->reg_no);
                 $data = array(
                     'to' => $phone,
                     'message' => $message,
-                    'token' => '96480520021706829602bb4e08e044c5f8d1efeab8608f09ce33'
+                    'token' => '96480520021706829602bb4e08e044c5f8d1efeab8608f09ce33
+                    
+                    '
                 );
 
                 $client = new Client();
