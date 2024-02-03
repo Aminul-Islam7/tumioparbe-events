@@ -56,7 +56,10 @@
         @enderror
 
 
-        <div id="districtHelp" lang="bn" class="form-text">আপনি কয়টি সিট বুক করতে চান?</div>
+        <div id="districtHelp" lang="bn" class="form-text">আপনি কয়টি সিট বুক করতে চান?
+          <i class="fa-solid fa-plus ms-1"></i> / <i class="fa-solid fa-minus me-1"></i>
+          ক্লিক করে সিট সংখ্যা বারাতে-কমাতে পারবেন।
+        </div>
       </div>
 
 
