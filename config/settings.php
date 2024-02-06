@@ -1,4 +1,4 @@
 <?php
 return [
-  'ticketPrice' => 1000,
+  'ticketPrice' => 600,
 ];
